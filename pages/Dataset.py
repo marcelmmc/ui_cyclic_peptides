@@ -11,10 +11,22 @@ st.set_page_config(layout="wide")
 @st.cache_data
 def get_dataset():
     df = pd.read_csv(
-        "https://raw.githubusercontent.com/plotly/datasets/master/tesla-stock-price.csv"
+        "http://cycpeptmpdb.com/static//download/peptides/CycPeptMPDB_Peptide_All.csv"
     )
-    df = df.drop(0)
-    df["volume"] = df["volume"].astype(float)
+    df = df[
+        [
+            "CycPeptMPDB_ID",
+            "Source",
+            "Year",
+            "Original_Name_in_Source_Literature",
+            "SMILES",
+            "Permeability",
+            "Same_Peptides_ID",
+            "Same_Peptides_Source",
+            "Same_Peptides_Permeability",
+            "Same_Peptides_Assay",
+        ]
+    ]
     return df
 
 
